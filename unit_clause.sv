@@ -30,58 +30,55 @@ if reset
 	end
 	
 	
-	else if (clock)
-		begin
-			s_ended <= 0;
-			
-			if ((find == 1) and (s_finding == 0))
-				begin
-					s_in_formula <= in_formula;
-					s_finding <= 1;
-					s_ended <= 0;
-					i <= 0;
-				end
-			else if (s_finding == 1)
-				begin
-					for (i; i < NUMBER_CLAUSES; i++)
-						begin
+else if (clock)
+	begin
+		s_ended <= 0;
+
+		if ((find == 1) and (s_finding == 0))
+			begin
+				s_in_formula <= in_formula;
+				s_finding <= 1;
+				s_ended <= 0;
+				i <= 0;
+			end
+		else if (s_finding == 1)
+			begin
+				for (i; i < NUMBER_CLAUSES; i++)
+					begin
+						if ((i == s_in_formula.len) or (_finished == 1))
+							break;
+						if ((s_in_formula.clauses(i)).len == 1)
+							begin
+								_found <= 1;
+								_finished <= 1;
+								s_lit_found <= (s_in_formula.clauses(i)).lits[0];
+							end
+					end
+				s_ended <= 1;
+
+				if ((i < s_in_formula.len) and (i < NUMBER_CLAUSES))
+					begin
+						if (s_in_formula.clauses(i).len = 1)
+							begin
+								s_finding <= 0;
+								s_found <= 1;
+								s_ended <= 1;
+								s_lit_found <= s_in_formula.clauses(i).lits(0);
+							end
+						else
+							s_ended <= 0;
+
+					end
+				else
+					begin
+						s_finding <= 0;
+						s_ended <= 0;
+						s_found <= 0; 
+					end
+
+				i <= i+1;
+			end
+	end
+
 							
-	s_ended <= '0';
-	if find='1' and s_finding='0' then
-		s_in_formula <= in_formula;
-		s_finding <= '1';
-		s_ended <= '0';
-		i <= 0;
-	elsif s_finding = '1' then
-
-		--for i in 0 to NUMBER_CLAUSES-1 loop
-		--	exit when ((i = s_in_formula.len)or(_finished='1'));
-		--	if (s_in_formula.clauses(i)).len = 1 then
-		--		_found <= '1';
-		--		_finished <= '1';
-		--		s_lit_found <= (s_in_formula.clauses(i)).lits[0];
-		--	end if ;
-		--end loop ;
-		--s_ended <= '1';
-
-		if((i < s_in_formula.len) and (i < NUMBER_CLAUSES)) then
-			if s_in_formula.clauses(i).len = 1 then
-				s_finding <= '0';
-				s_found <= '1';
-				s_ended <= '1';
-				s_lit_found <= s_in_formula.clauses(i).lits(0);
-			else
-				s_ended <= '0';
-			end if;
-		else
-			s_finding <= '0';
-			s_ended <= '1';
-			s_found <= '0'; 
-		end if;
-		i <= i+1;
-	end if;
-end if;
-
-end process ;
-
 endmodule

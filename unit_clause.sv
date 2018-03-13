@@ -15,16 +15,21 @@ lit s_lit_found = ZERO_LIT;
 logic s_finding = '0';
 int i = 0;
 
-begin
-ended <= s_ended;
-found <= s_found;
-lit_found <= s_lit_found;
 
-process(clock,reset)
+assign ended = s_ended;
+assign found = s_found;
+assign lit_found = s_lit_found;
+
+always_ff @(posedge clock or posedge reset)
 begin
-if reset='1' then
-	s_ended <= '0';
-	s_found <= '0';
+	
+if reset
+	begin
+		s_ended <= 0;
+		s_found <= 0;
+	end
+	
+	
 elsif rising_edge(clock) then
 	s_ended <= '0';
 	if find='1' and s_finding='0' then

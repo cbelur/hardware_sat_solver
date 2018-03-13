@@ -30,7 +30,22 @@ if reset
 	end
 	
 	
-elsif rising_edge(clock) then
+	else if (clock)
+		begin
+			s_ended <= 0;
+			
+			if ((find == 1) and (s_finding == 0))
+				begin
+					s_in_formula <= in_formula;
+					s_finding <= 1;
+					s_ended <= 0;
+					i <= 0;
+				end
+			else if (s_finding == 1)
+				begin
+					for (i; i < NUMBER_CLAUSES; i++)
+						begin
+							
 	s_ended <= '0';
 	if find='1' and s_finding='0' then
 		s_in_formula <= in_formula;

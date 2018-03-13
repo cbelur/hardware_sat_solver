@@ -9,10 +9,10 @@ output ended, found;
 output lit lit_found;
 
 formula s_in_formula = ZERO_FORMULA;
-logic s_ended = '0';
-logic s_found = '0';
+logic s_ended = 0;
+logic s_found = 0;
 lit s_lit_found = ZERO_LIT;
-logic s_finding = '0';
+logic s_finding = 0;
 int i = 0;
 
 

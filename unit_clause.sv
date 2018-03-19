@@ -80,5 +80,5 @@ else if (clock)
 			end
 	end
 
-							
+						
 endmodule

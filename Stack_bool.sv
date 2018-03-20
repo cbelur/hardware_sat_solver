@@ -8,7 +8,6 @@ module Stack_bool(input clock, reset, wr_en, pop, din,
 typedef logic[bool_stack_size-1:0] mem_type;
 mem_type data;
 logic[width_bool_stack_size:0] curr_size;
-logic[width_bool_stack_size:0] temp;
 
 logic data_in, data_out, full_signal, empty_signal, front_signal;
 

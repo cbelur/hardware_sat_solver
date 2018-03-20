@@ -8,7 +8,7 @@ formula in_formula;
 logic ended, found;
 lit lit_found;
 
-unitclause test1(clock, reset, find, in_formula, ended, found, lit_found);
+Unit_Clause test1(clock, reset, find, in_formula, ended, found, lit_found);
 
 always
 begin

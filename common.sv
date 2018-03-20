@@ -4,10 +4,11 @@ parameter number_clauses = 10;
 parameter number_literal = 5;
 parameter width_litarray = $clog2(number_literal+1)-1;
 parameter width_clausearray = $clog2(number_clauses+1)-1;
-//parameter lit_range_st = 0;
-//parameter lit_range_end = number_literal;
-//parameter bool_stack_size = number_literal;
+parameter lit_range_st = 0;
+parameter lit_range_end = number_literal;
+parameter bool_stack_size = number_literal;
 parameter formula_stack_size = number_literal;
+parameter width_bool_stack_size = $clog2(bool_stack_size)-1;
 
 typedef struct packed {
      logic[width_litarray:0] num;
@@ -28,7 +29,7 @@ typedef struct packed {
      logic[width_clausearray:0] len;
    } formula;
 
-typedef formula[formula_stack_size:0] formula_array;
+typedef formula[0:formula_stack_size] formula_array;
 
 const lit zero_lit = '{num:1'b0, val:1'b0};
 const lit_array zero_lit_array = '{number_literal{zero_lit}};

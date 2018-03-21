@@ -2,16 +2,16 @@
 
 import common::*;
 
-module Stack_formula(input clock, reset, wr_en, pop,
-                     input formula din,
+module Stack_integer(input clock, reset, wr_en, pop,
+                     input lit din,
                      output full, empty,
-                     output formula dout, front);
+                     output lit dout, front);
                   
-typedef formula[formula_stack_size-1:0] mem_type;
+typedef lit[lit_stack_size-1:0] mem_type;
 mem_type data;
-logic[width_formula_stack_size:0] curr_size;
+logic[width_lit_stack_size:0] curr_size;
 
-formula data_in, data_out, front_signal; 
+lit data_in, data_out, front_signal; 
 logic full_signal, empty_signal;
 
 assign data_in = din;
@@ -24,10 +24,10 @@ if (reset)
     begin
     data <= 1'b0;
     curr_size <= 1'b0;
-    data_out <= zero_formula;
+    data_out <= zero_lit;
     empty_signal <= 1'b1;
     full_signal <= 1'b0;
-    front_signal <= zero_formula;
+    front_signal <= zero_lit;
     end
 else if (clock)
     begin
@@ -38,7 +38,7 @@ else if (clock)
         curr_size <= curr_size+1;
         front_signal <= data_in;
         empty_signal <= 1'b0;
-        if (curr_size+1 >= formula_stack_size)
+        if (curr_size+1 >= lit_stack_size)
             begin
             full_signal <= 1'b1;
             end

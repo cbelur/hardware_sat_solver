@@ -15,7 +15,7 @@ lit s_out_lit, C;
 logic s_sat, s_unsat, s_finding, s_temp_found, s_ended, s_propagating;
 
 typedef enum logic[4:0] {UC_b, UC_r, UC_e, PL_b, PL_r, PL_e, PROP_b, PROP_r, PROP_e, IDLE} state;
-logic present_state, called_from_state;
+state present_state, called_from_state;
 
 lit UC_lit_found;
 logic UC_find, UC_ended, UC_found;

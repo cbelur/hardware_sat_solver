@@ -2,7 +2,7 @@
 
 import common::*;
 
-module propagateliteral(input clock, reset, find, 
+module Propagate_literal(input clock, reset, find, 
                         input lit in_lit, 
                         input formula in_formula, 
                         output ended, empty_clause, empty_formula, 

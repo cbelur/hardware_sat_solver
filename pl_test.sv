@@ -9,7 +9,7 @@ formula in_formula;
 formula out_formula;
 logic ended, empty_clause, empty_formula;
 
-propagateliteral test1(clock, reset, find, in_lit, in_formula, ended, empty_clause, empty_formula, out_formula);
+Propagate_literal test1(clock, reset, find, in_lit, in_formula, ended, empty_clause, empty_formula, out_formula);
 
 always
 begin

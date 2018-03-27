@@ -39,6 +39,7 @@ reset=1'b0; find=1'b1; in_formula='{{{{{3'b001,1'b1},{3'b010,1'b1},{3'b011,1'b1}
             {{{3'b001,1'b1},{3'b010,1'b1},zero_lit,zero_lit,zero_lit},3'b010},
             {{{3'b010,1'b0},{3'b011,1'b0},{3'b100,1'b1},zero_lit,zero_lit},3'b011},
             {{{3'b011,1'b0},zero_lit,zero_lit,zero_lit,zero_lit},3'b001}},4'b1010};
+#500;find=1'b0;
 
 end
 endmodule

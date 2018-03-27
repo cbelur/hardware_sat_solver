@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 import common::*;
 
-module Unit_Clause(input clock, reset,find,
+module Unit_Clause(input clock, reset, find,
            input formula in_formula,
            output ended, found, 
            output lit lit_found);

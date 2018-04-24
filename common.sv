@@ -2,7 +2,7 @@ package common;
 parameter number_clauses = 10;
 parameter number_literal = 5;
 parameter width_litarray = $clog2(number_literal+1)-1;
-parameter width_clausearray = $clog2(number_clauses+1)-1;
+parameter width_clausearray = $clog2(number_clauses)-1;
 parameter lit_range_st = 0;
 parameter lit_range_end = number_literal;
 parameter bool_stack_size = number_literal;

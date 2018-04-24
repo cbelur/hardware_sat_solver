@@ -14,7 +14,7 @@ formula s_in_formula, s_out_formula;
 lit s_out_lit, C;
 logic s_sat, s_unsat, s_finding, s_temp_found, s_ended, s_propagating;
 
-typedef enum logic[4:0] {UC_b, UC_r, UC_e, PL_b, PL_r, PL_e, PROP_b, PROP_r, PROP_e, IDLE} state;
+typedef enum logic[3:0] {UC_b, UC_r, UC_e, PL_b, PL_r, PL_e, PROP_b, PROP_r, PROP_e, IDLE} state;
 state present_state, called_from_state;
 
 lit UC_lit_found;
@@ -27,7 +27,7 @@ formula PropL_out_formula;
 
 Unit_Clause unitclause(.clock(clock), .reset(reset), .find(UC_find), .in_formula(s_in_formula), .ended(UC_ended), .found(UC_found), .lit_found(UC_lit_found));
 Pure_literal pureliteral(.clock(clock), .reset(reset), .find(PL_find), .in_formula(s_in_formula), .ended(PL_ended), .found(PL_found), .lit_found(PL_lit_found));
-Propagate_literal propagateliteral(.clock(clock), .reset(reset), .find(PropL_find), .in_formula(s_in_formula), .in_lit(PropL_in_lit), .ended(PropL_ended), .empty_clause(PropL_empty_clause), .empty_formula(PropL_empty_formula), .out_formula(PropL_out_formula));
+Propagate_literal propagateliteral_dbk(.clock(clock), .reset(reset), .find(PropL_find), .in_formula(s_in_formula), .in_lit(PropL_in_lit), .ended(PropL_ended), .empty_clause(PropL_empty_clause), .empty_formula(PropL_empty_formula), .out_formula(PropL_out_formula));
 
 assign ended = s_ended;
 assign out_formula = s_out_formula;

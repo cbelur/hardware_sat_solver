@@ -4,22 +4,21 @@ import common::*;
 
 module decide_branch (input clock, reset, find, 
 					  input formula formula_in, 
-					  output ended,
+					  output logic ended,
 					  output lit lit_out);
 
-formula formula_s = zero_formula;
-lit lit_s = zero_lit;
-logic [width_clausearray:0] iterator = 0;
-logic computing = 0;
-logic finished = 0;
-logic ended = 0;
+formula formula_s;
+lit lit_s;
+logic [width_clausearray:0] iterator;
+logic computing;
+logic finished;
 
 assign lit_out = lit_s;
 
 always_ff @(posedge clock or posedge reset)
 begin
 
-	if (reset == 1'b1)
+	if (reset)
 	begin
 		
 		formula_s <= zero_formula;
@@ -45,7 +44,7 @@ begin
 		      end
 		else if (computing == 1'b1)
 		  begin
-		      if (formula_s.clauses[iterator].len == 0)
+		      if (formula_s.clauses[iterator].len == 1'b0)
 		          begin
 			         iterator <= iterator + 1;
 		          end

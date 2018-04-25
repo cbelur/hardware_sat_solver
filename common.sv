@@ -1,6 +1,6 @@
 package common;
-parameter number_clauses = 10;
-parameter number_literal = 5;
+parameter number_clauses = 5;
+parameter number_literal = 3;
 parameter width_litarray = $clog2(number_literal+1)-1;
 parameter width_clausearray = $clog2(number_clauses)-1;
 parameter lit_range_st = 0;

@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
 
+import common::*;
+
 module top(input clock, reset, load,
            input[number_literal-1:0] i,
            output logic ended,
@@ -117,6 +119,16 @@ Stack_integer stackinteger(.clock(clock),
                            .front(DV_St_front),
                            .full(DV_St_full),
                            .empty(DV_St_empty));
+                           
+Stack_integer stackinteger_litstack(.clock(clock),
+                                    .reset(reset),
+                                    .wr_en(Lit_St_wr_en),
+                                    .pop(Lit_St_pop),
+                                    .din(Lit_St_din),
+                                    .dout(Lit_St_dout),
+                                    .front(Lit_St_front),
+                                    .full(Lit_St_full),
+                                    .empty(Lit_St_empty));
 
 Stack_formula stackformula(.clock(clock),
                            .reset(reset),
